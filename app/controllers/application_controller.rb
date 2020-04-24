@@ -19,32 +19,32 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/recipes/:id' do  #loads show page
-    @recipe = Recipe.find_by_id(params[:id])
+    @recipes = Recipe.find_by_id(params[:id])
     erb :show
   end
 
   get '/recipes/:id/edit' do #loads edit form
-    @recipe = Recipe.find_by_id(params[:id])
+    @recipes = Recipe.find_by_id(params[:id])
     erb :edit
   end
 
   patch '/recipes/:id' do  #updates a recipe
-    @recipe = Recipe.find_by_id(params[:id])
-    @recipe.name = params[:name]
-    @recipe.ingredients = params[:ingredients]
-    @recipe.cook_time = params[:cook_time]
-    @recipe.save
-    redirect to "/recipes/#{@recipe.id}"
+    @recipes = Recipe.find_by_id(params[:id])
+    @recipes.name = params[:name]
+    @recipes.ingredients = params[:ingredients]
+    @recipes.cook_time = params[:cook_time]
+    @recipes.save
+    redirect to "/recipes/#{@recipes.id}"
   end
 
   post '/recipes' do  #creates a recipe
-    @recipe = Recipe.create(params)
-    redirect to "/recipes/#{@recipe.id}"
+    @recipes = Recipe.create(params)
+    redirect to "/recipes/#{@recipes.id}"
   end
 
   delete '/recipes/:id' do #destroy action
-    @recipe = Recipe.find_by_id(params[:id])
-    @recipe.delete
+    @recipes = Recipe.find_by_id(params[:id])
+    @recipes.delete
     redirect to '/recipes'
   end
 
