@@ -36,7 +36,7 @@ class ApplicationController < Sinatra::Base
          new_params[:cook_time] = params[:cook_time]
          old.update(new_params)
 
-      redirect to "/articles/#{@articles.id}"
+      redirect to "/recipes/#{@recipes.id}"
     end
 
   post '/recipes' do
